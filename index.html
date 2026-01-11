@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Achievements</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <title>Mukeshkumar | Full Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -201,17 +202,26 @@
 
       const thumbnailIndices = getThumbnailIndices();
 
+      const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
       return (
-        <div className="carousel-container">
+        <div className="carousel-container" id="home">
           {/* Header */}
           <header className="header">
-            <div className="logo">MUKESHKUMAR</div>
+            <div className="logo" onClick={() => scrollToSection('home')}>MUKESHKUMAR</div>
             <nav className="nav-menu">
-              <span className="nav-item">HOME</span>
-              <span className="nav-item">ACHIEVEMENTS</span>
-              <span className="nav-item">PROJECTS</span>
-              <span className="nav-item">ABOUT</span>
-              <span className="nav-item">CONTACT</span>
+              <span className="nav-item" onClick={() => scrollToSection('home')}>Home</span>
+              <span className="nav-item" onClick={() => scrollToSection('about')}>About</span>
+              <span className="nav-item" onClick={() => scrollToSection('skills')}>Skills</span>
+              <span className="nav-item" onClick={() => scrollToSection('experience')}>Experience</span>
+              <span className="nav-item" onClick={() => scrollToSection('achievements')}>Achievements</span>
+              <span className="nav-item" onClick={() => scrollToSection('courses')}>Courses</span>
+              <span className="nav-item" onClick={() => scrollToSection('contact')}>Contact</span>
             </nav>
           </header>
 
@@ -287,14 +297,243 @@
               style={{ width: isPlaying ? `${progress}%` : '0%' }}
             />
           </div>
+
+          {/* Scroll Indicator */}
+          <div className="scroll-indicator" onClick={() => scrollToSection('about')}>
+            <span>SCROLL TO EXPLORE</span>
+            <i className="fas fa-chevron-down"></i>
+          </div>
         </div>
       );
     };
+
+    // Achievement cards data
+    const achievementCards = [
+      { id: 1, image: "hackathon/sih-winner-2025.jpeg", title: "SIH 2025 Winner", subtitle: "Smart India Hackathon" },
+      { id: 2, image: "hackathon/internation-top 100-hackhazard.jpeg", title: "International Top 100", subtitle: "HackHazard Competition" },
+      { id: 3, image: "hackathon/3rd prize=srm-datakon.jpeg", title: "3rd Prize", subtitle: "SRM Datakon'24" },
+      { id: 4, image: "hackathon/2nd-prize-ideathon-st.joseph college of engineering.jpeg", title: "2nd Prize Ideathon", subtitle: "St. Joseph College" },
+      { id: 5, image: "hackathon/thoothukudi-police-hacathon.jpeg", title: "TN Police Hackathon", subtitle: "Top 12 Finalist" },
+      { id: 6, image: "hackathon/dpii-startupTN-got startup TN-card.jpg", title: "DPII StartupTN", subtitle: "Top 20+ Teams" },
+      { id: 7, image: "hackathon/global startup summit-coimbatore.jpg", title: "Global Startup Summit", subtitle: "Official Delegate" },
+      { id: 8, image: "hackathon/first place-coding club.jpeg", title: "1st Place", subtitle: "Coding Club" },
+      { id: 9, image: "hackathon/google-solution-challenge.jpeg", title: "Google Solution Challenge", subtitle: "Participant" },
+      { id: 10, image: "hackathon/hackz24-nationalfainalist.jpeg", title: "HackZ24", subtitle: "National Finalist" },
+      { id: 11, image: "hackathon/inno-blitz.jpeg", title: "Inno-Blitz", subtitle: "Competition" },
+      { id: 12, image: "hackathon/KiC-START Innovation Launchpad-kongunadu-finalist.jpg", title: "KiC-START Launchpad", subtitle: "Kongunadu Finalist" },
+      { id: 13, image: "hackathon/nation finalist-vertex-innovate.jpeg", title: "Vertex Innovate", subtitle: "National Finalist" },
+      { id: 14, image: "hackathon/second place-coding clip.jpeg", title: "2nd Place", subtitle: "Coding Clip" },
+      { id: 15, image: "hackathon/tech-fusion-cresent.jpg", title: "Tech Fusion", subtitle: "Crescent" },
+      { id: 16, image: "hackathon/thalir-srm-finalist.jpg", title: "Thalir SRM", subtitle: "Finalist" }
+    ];
+
+    // Projects data
+    const projects = [
+      { id: 1, title: "CryBIT", subtitle: "Telegram-based Scam Detection", description: "Built with Python, Telethon, MongoDB, and NLP libraries for spam and phishing detection.", tech: ["Python", "Telethon", "MongoDB", "NLP"] },
+      { id: 2, title: "AdShield", subtitle: "AI-Powered Scam Analyzer", description: "Utilized web scraping (Selenium/BeautifulSoup), computer vision, and NLP with Python and ML models.", tech: ["Python", "Selenium", "BeautifulSoup", "CV", "NLP"] },
+      { id: 3, title: "SmartPark", subtitle: "Intelligent Parking Management", description: "Developed using React, Node.js, Express, MongoDB, OpenCV API for LPR.", tech: ["React", "Node.js", "Express", "MongoDB", "OpenCV"] },
+      { id: 4, title: "GroqGazer", subtitle: "Web Intelligence Explorer", description: "Integrated GrokAI API with Python, Streamlit, and PocketGroq for dynamic data insights.", tech: ["Python", "Streamlit", "GrokAI API"] },
+      { id: 5, title: "PowrMET", subtitle: "Smart Energy Meter", description: "Developed LoRaWAN smart meter. Represented at TNGSS, selected among 500+ applicants.", tech: ["LoRaWAN", "IoT", "Embedded Systems"] },
+      { id: 6, title: "MutualChain", subtitle: "DeFi Insurance Platform", description: "Built using Next.js, Blockchain, AI/ML, and smart contracts for trustless coverage.", tech: ["Next.js", "Blockchain", "AI/ML", "Smart Contracts"] }
+    ];
+
+    // Skills data
+    const skillCategories = [
+      { title: "Full Stack Development", skills: ["HTML & CSS", "JavaScript", "React", "Node.js", "Express", "MongoDB", "Firebase", "TailWind CSS", "Next.js", "REST APIs"] },
+      { title: "Programming Languages", skills: ["Python", "C", "Java"] },
+      { title: "AI & Machine Learning", skills: ["TensorFlow", "OpenCV", "BERT", "CNN & LSTM", "Random Forest", "Tesseract OCR"] },
+      { title: "Tools & Technologies", skills: ["Git & GitHub", "VS Code", "Postman", "Blockchain", "LoRaWAN", "WebSocket", "Streamlit", "Three.js", "Android Studio"] },
+      { title: "Soft Skills", skills: ["Problem Solving", "Critical Thinking", "Communication", "Team Leadership", "Innovation", "Project Management"] }
+    ];
+
+    // Courses data
+    const courses = {
+      coursera: [
+        { title: "Introduction to Front End Development", file: "coursera/introduction to front end development.pdf" },
+        { title: "Programming with JavaScript", file: "coursera/programming with javascript.pdf" },
+        { title: "Version Control", file: "coursera/version control.pdf" }
+      ],
+      springboard: [
+        { title: "Java Programming Fundamentals", file: "springboard/java programming fundamentals.pdf" },
+        { title: "CSS Certificate", file: "springboard/mukeshkumar_css_certificate.pdf" },
+        { title: "Frontend Developer Certificate", file: "springboard/mukeshkumar_frontendDeveloper_certificate.pdf" },
+        { title: "HTML5 Certificate", file: "springboard/MukeshKumar_HTML5_certificate.pdf" },
+        { title: "JavaScript Certificate", file: "springboard/mukeshkumar_javascript_certificate.pdf" },
+        { title: "Networking & Web Technology", file: "springboard/mukeshkumar_networkingAndWebTechnology_certificate.pdf" }
+      ]
+    };
+
+    // About Section
+    const AboutSection = () => (
+      <section id="about" className="section about-section">
+        <div className="section-container">
+          <div className="about-grid">
+            <div className="about-left">
+              <h2 className="section-title">About Me</h2>
+              <div className="title-underline"></div>
+              <p className="about-text">I'm a passionate Full Stack Developer with expertise in building innovative applications focused on AI, cybersecurity, and smart systems. Currently pursuing my degree while actively contributing to the tech community through hackathons and startup ventures.</p>
+              <p className="about-text">As the Co-Founder of Powerenv Technologies, I've had the privilege of representing my startup at the Tamil Nadu Global Startup Summit (TNGSS) and winning Smart India Hackathon 2025.</p>
+              <div className="about-details">
+                <div className="detail-item"><span className="detail-label">Name</span><span className="detail-value">Mukeshkumar M</span></div>
+                <div className="detail-item"><span className="detail-label">Role</span><span className="detail-value">Full Stack Developer</span></div>
+                <div className="detail-item"><span className="detail-label">Experience</span><span className="detail-value">15+ Hackathons Won</span></div>
+              </div>
+            </div>
+            <div className="about-right">
+              <div className="about-image-wrapper">
+                <img src="myself.png" alt="Mukeshkumar" className="about-image" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    // Skills Section
+    const SkillsSection = () => (
+      <section id="skills" className="section skills-section">
+        <div className="section-container">
+          <h2 className="section-title center">Skills & Expertise</h2>
+          <div className="title-underline center"></div>
+          <div className="skills-grid">
+            {skillCategories.map((category, index) => (
+              <div key={index} className="skill-category">
+                <h3 className="skill-category-title">{category.title}</h3>
+                <div className="skill-tags">
+                  {category.skills.map((skill, skillIndex) => (
+                    <span key={skillIndex} className="skill-tag">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    // Experience Section
+    const ExperienceSection = () => (
+      <section id="experience" className="section experience-section">
+        <div className="section-container">
+          <h2 className="section-title">Experience</h2>
+          <div className="title-underline"></div>
+          <div className="experience-grid">
+            <div className="experience-card featured">
+              <div className="exp-header"><span className="exp-date">March 2024 – Present</span><span className="exp-badge">Current</span></div>
+              <h3 className="exp-title">Co-Founder & Lead Software Developer</h3>
+              <h4 className="exp-company">Powerenv Technologies</h4>
+              <p className="exp-description">Developed LoRaWAN smart meter technology. Represented as founder at Tamil Nadu Global Startup Summit (TNGSS), selected among 500+ applicants.</p>
+              <div className="exp-tags"><span>LoRaWAN</span><span>IoT</span><span>Smart Meters</span><span>Startup</span></div>
+            </div>
+            <div className="experience-card">
+              <div className="exp-header"><span className="exp-date">2024</span></div>
+              <h3 className="exp-title">Smart India Hackathon 2025 Winner</h3>
+              <h4 className="exp-company">Team AXEFORTUNE</h4>
+              <p className="exp-description">After months of tremendous effort, sleepless nights, and unbreakable teamwork, our team achieved the dream of winning Smart India Hackathon 2025.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    // Achievements Section
+    const AchievementsSection = () => (
+      <section id="achievements" className="section achievements-section">
+        <div className="section-container">
+          <h2 className="section-title center">Achievements</h2>
+          <div className="title-underline center"></div>
+          <p className="section-subtitle">Hackathons, Competitions & Recognition</p>
+          <div className="achievements-grid">
+            {achievementCards.map((achievement) => (
+              <div key={achievement.id} className="achievement-card">
+                <div className="achievement-image"><img src={achievement.image} alt={achievement.title} /><div className="achievement-overlay"><i className="fas fa-trophy"></i></div></div>
+                <div className="achievement-info"><h4>{achievement.title}</h4><p>{achievement.subtitle}</p></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    // Projects Section
+    const ProjectsSection = () => (
+      <section id="projects" className="section projects-section">
+        <div className="section-container">
+          <h2 className="section-title">Projects</h2>
+          <div className="title-underline"></div>
+          <p className="section-subtitle left">Developed and deployed full-stack applications focused on AI, cybersecurity, and smart systems</p>
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <div key={project.id} className="project-card">
+                <div className="project-icon"><i className="fas fa-code"></i></div>
+                <h3 className="project-title">{project.title}</h3>
+                <span className="project-subtitle">{project.subtitle}</span>
+                <p className="project-description">{project.description}</p>
+                <div className="project-tech">{project.tech.map((tech, index) => (<span key={index} className="tech-tag">{tech}</span>))}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    // Courses Section
+    const CoursesSection = () => (
+      <section id="courses" className="section courses-section">
+        <div className="section-container">
+          <h2 className="section-title center">Certifications & Courses</h2>
+          <div className="title-underline center"></div>
+          <div className="courses-container">
+            <div className="course-category">
+              <div className="category-header"><div className="platform-icon coursera"><i className="fas fa-graduation-cap"></i></div><h3>Coursera</h3></div>
+              <div className="courses-list">
+                {courses.coursera.map((course, index) => (
+                  <a key={index} href={course.file} target="_blank" rel="noopener noreferrer" className="course-item"><i className="fas fa-certificate"></i><span>{course.title}</span><i className="fas fa-external-link-alt"></i></a>
+                ))}
+              </div>
+            </div>
+            <div className="course-category">
+              <div className="category-header"><div className="platform-icon springboard">SB</div><h3>Springboard</h3></div>
+              <div className="courses-list">
+                {courses.springboard.map((course, index) => (
+                  <a key={index} href={course.file} target="_blank" rel="noopener noreferrer" className="course-item"><i className="fas fa-certificate"></i><span>{course.title}</span><i className="fas fa-external-link-alt"></i></a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    // Contact Section
+    const ContactSection = () => (
+      <section id="contact" className="section contact-section">
+        <div className="section-container">
+          <h2 className="section-title-light center">Thank You</h2>
+          <div className="title-underline center light"></div>
+          <p className="contact-subtitle">Let's Connect & Build Something Amazing Together</p>
+          <div className="contact-grid">
+            <div className="contact-card"><i className="fas fa-phone"></i><h4>Phone</h4><p>+91 6380568055</p></div>
+            <div className="contact-card"><i className="fas fa-envelope"></i><h4>Email</h4><p>mukeshkumar.cse24@gmail.com</p></div>
+            <div className="contact-card"><a href="https://www.linkedin.com/in/mukeshkumar-m-582a07326/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i><h4>LinkedIn</h4><p>Connect with me</p></a></div>
+            <div className="contact-card"><a href="https://github.com/mukesh-dev-git" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i><h4>GitHub</h4><p>View my projects</p></a></div>
+          </div>
+          <div className="footer-text"><p>© 2025 Mukeshkumar. All Rights Reserved.</p></div>
+        </div>
+      </section>
+    );
 
     // Main App Component
     const App = () => (
       <>
         <Carousel />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <AchievementsSection />
+        <ProjectsSection />
+        <CoursesSection />
+        <ContactSection />
       </>
     );
 
